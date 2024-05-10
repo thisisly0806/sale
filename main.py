@@ -45,7 +45,7 @@ def load_data_main(file_path):
     return df, df_revenue
 def main():
     st.title("GROUP 11 SALE PREDICTION")
-    st.write("This is a simple demo to visualize the result of Group 11")
+    st.write("This is a simple demo to visualize the result of Group 11.")
     side_bar()
 def side_bar():
     st.sidebar.image("image/logo_uel.png", use_column_width=True)
@@ -83,7 +83,7 @@ def side_bar():
             x=df1.index,
             y=df1.values,
             labels={'y': 'Sales amount'},
-            title='Product Category by sales amount',
+            title='Revenue By Product Category',
             # width=1500,
             # height=700
         )
@@ -189,6 +189,9 @@ def track_experiment(dfex_train, dfex_test):
     ax.set_xlabel('Date')
     ax.set_ylabel('Revenue')
     ax.legend()
+    # Xóa đường viền ngoài
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
     plt.tight_layout()
     # Display the plot
     st.pyplot(fig)
