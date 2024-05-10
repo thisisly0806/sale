@@ -17,10 +17,6 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 import subprocess
-
-def install_requirements():
-    subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
-# Đường dẫn tới file CSV
 def df_holiday():
     df_holiday = pd.read_csv("data/holiday.csv")
     df_holiday['date'] = pd.to_datetime(df_holiday['date'])
@@ -48,16 +44,18 @@ def load_data_main(file_path):
     df_revenue.set_index('date', inplace=True)
     return df, df_revenue
 def main():
-    st.title("GROUP 11 SALE PREDICTION DEMO")
-    # Gọi hàm side_bar() để hiển thị sidebar và xử lý dữ liệu tệp tin CSV
+    st.title("GROUP 11 SALE PREDICTION")
+    st.write("This is a simple demo to visualize the result of Group 11")
     side_bar()
 def side_bar():
     st.sidebar.image("image/logo_uel.png", use_column_width=True)
     with st.sidebar:
-        st.header("1. Load data")
+        st.header("Load data")
         uploaded_file = st.file_uploader("Choose file CSV", type="csv")
     if uploaded_file is not None:
         df, df_revenue = load_data_main(uploaded_file)
+        st.title("Sale Overview")
+
         # ========================= CHART1 ======================
         # Vẽ đồ thị dạng đường để có cái nhìn tổng thể về doanh thu hàng ngày
         fig = px.line(df_revenue, x=df_revenue.index, y='revenue')
@@ -69,7 +67,6 @@ def side_bar():
         )
         fig.update_xaxes(rangeslider_visible=True)
         st.plotly_chart(fig)
-        st.title("Sale Overview")
         # =============== CHART 3 ==========================
         fig = px.histogram(df_revenue, x='revenue')
         fig.update_layout(
@@ -118,7 +115,7 @@ def side_bar():
         df_holiday_data = get_holiday_data()
         dfex = pd.concat([df_revenue, df_holiday_data], axis=1)
 
-        st.title("Experiment Trạcking")
+        st.title("Experiment Tracking")
         make_track = st.checkbox("Experiment Tracking")
         if make_track and 'dfex' in locals():
             dfex_train = dfex['2017-01-05':'2018-07-31']
@@ -152,7 +149,6 @@ def side_bar():
                     title="Actual vs Predicted Sales"
                 )
                 st.plotly_chart(fig)
-
 def metrics(df1, predicted_values):
     y_true = df1['revenue']
     mape = np.mean(np.abs((y_true - predicted_values) / y_true)) * 100
