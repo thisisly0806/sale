@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 import plotly.subplots as sp
+from pipreqs import pipreqs
 from plotly.subplots import make_subplots
 from pygments.lexers import go
 import statsmodels.tsa.statespace.sarimax
@@ -17,6 +18,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 import subprocess
+
 def df_holiday():
     df_holiday = pd.read_csv("data/holiday.csv")
     df_holiday['date'] = pd.to_datetime(df_holiday['date'])
