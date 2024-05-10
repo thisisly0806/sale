@@ -16,7 +16,10 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 import pandas as pd
 from statsmodels.tsa.statespace.sarimax import SARIMAX
+import subprocess
 
+def install_requirements():
+    subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
 # Đường dẫn tới file CSV
 def df_holiday():
     df_holiday = pd.read_csv("data/holiday.csv")
