@@ -5,12 +5,10 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 import plotly.subplots as sp
-from pipreqs import pipreqs
 from plotly.subplots import make_subplots
 from pygments.lexers import go
 import statsmodels.tsa.statespace.sarimax
-# importing high level interactive plotting libraries
-from plotly.subplots import make_subplots
+
 import plotly.graph_objs as go
 import statsmodels.api as sm
 from sklearn.metrics import mean_squared_error, mean_absolute_error
