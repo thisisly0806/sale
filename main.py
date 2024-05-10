@@ -45,7 +45,7 @@ def load_data_main(file_path):
     df_revenue.set_index('date', inplace=True)
     return df, df_revenue
 def main():
-    st.title("Sale Overview")
+    st.title("GROUP 11 SALE PREDICTION DEMO")
     # Gọi hàm side_bar() để hiển thị sidebar và xử lý dữ liệu tệp tin CSV
     side_bar()
 def side_bar():
@@ -66,6 +66,7 @@ def side_bar():
         )
         fig.update_xaxes(rangeslider_visible=True)
         st.plotly_chart(fig)
+        st.title("Sale Overview")
         # =============== CHART 3 ==========================
         fig = px.histogram(df_revenue, x='revenue')
         fig.update_layout(
